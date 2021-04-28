@@ -1,0 +1,16 @@
+
+<div class="container col-lg-6">
+  <h1 class="text-center">verify email</h1>
+  <div class="card">
+    <div class="card-body">
+      <form class="form-group">
+        <div class="alert alert-warning" *ngIf='invalidEmail'>{{errorMessage}}</div>
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input type="text" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter Valid email"
+            name="email">
+        </div>
+        <button class="btn btn-success" (click)=verifyEmailForForgat()>verify</button>
+      </form>
+    </div>
+  </div>

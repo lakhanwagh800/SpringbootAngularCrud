@@ -1,0 +1,15 @@
+<div class="container col-lg-6">
+  <h1 class="text-center">verfy Email</h1>
+  <div class="card">
+    <div class="card-body">
+      <form #loginForm="ngForm">
+      <div class="form-group">
+      <label for="name">Email Id</label>
+      <input type="text" class="form-control" id="email" required [(ngModel)]="email" name="emailId">
+    </div>
+        <button (click)=verfyEmail() class="btn btn-success">verify</button>
+      </form>
+    </div>
+  </div>
+</div>
+

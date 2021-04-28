@@ -1,0 +1,29 @@
+<div class="container col-lg-6">
+    <h1 class="text-center">Login</h1>
+    <div class="card">
+      <div>
+        <form  [formGroup]="logIn" (ngSubmit)="onSubmit(logIn.value)">
+            <div class="modal-body">
+                <div class="form-row">  
+                  <div class="form-group col-sm-12">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" formControlName="username" name="username" ngModel placeholder="Email" required />
+                  </div>  
+
+                  <div class="form-group col-sm-12">
+                    <label for="password">Password</label>
+                    <input type="text" class="form-control" formControlName="password" name="password" ngModel placeholder="Password" required />
+                  </div>
+                </div>         
+            </div>
+            <div class="text-center">
+              <button class="btn btn-success">Login</button>
+          <button type="button" class="btn btn-link" (click)=newregister()>New Registration</button>
+          <button type="button" class="btn btn-link" (click)=forgotpwd()>Forgot-Password?</button>
+            </div>
+           </form>
+    </div>
+    <div>
+    </div>
+    </div>
+  </div>        

@@ -1,0 +1,89 @@
+<div class="panel panel-default">
+
+  <div class="panel-body">
+    <h1>Student Details</h1>
+      <table  class="table table-hover table-sm" datatable [dtOptions]="dtOptions"
+      [dtTrigger]="dtTrigger"  >
+          <thead class="thead-light">
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email Id</th>
+                <th>Branch</th>
+                <th>User Name</th>
+                <th>Password</th>
+                <th>Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+               <tr *ngFor="let student of students">
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.branch}}</td>
+                <td>{{student.username}}</td>
+                <td>{{student.password}}</td>
+                <td><button (click)="deleteStudent(student.id)" class="btn btn-danger">Delete</button>
+                    <button (click)="updateStudent(student.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+                    <button (click)="StudentDetails(student.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                </td>
+                </tr> 
+          </tbody><br>
+      </table>
+  </div>
+</div> 
+
+<div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+                <form [formGroup]="studentupdateform" #updstu (ngSubmit)="updateStu(updstu)">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" style="text-align: center">Update Student</h4>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body" *ngFor="let student of studentlist " >
+                <div [hidden]="isupdated">
+
+                    <input type="hidden" class="form-control"  formControlName="student_id" [(ngModel)]="student.student_id">
+                            <div class="form-group">
+                                <label for="name">Student Name</label>
+                                <input type="text" class="form-control"  formControlName="student_name" [(ngModel)]="student.student_name"  >
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="name">Student Email</label>
+                                <input type="text" class="form-control" formControlName="student_email" [(ngModel)]="student.student_email">
+                            </div>
+                    
+                            <div class="form-group">
+                                <label for="name">Student Branch</label>
+                                  <select class="form-control" formControlName="student_branch" required>                                   
+                                    <option value="B-Tech" [selected]="'B-Tech' == student.student_branch">B-Tech</option>
+                                    <option value="BCA" [selected]="'BCA' == student.student_branch">BCA</option>
+                                    <option value="MCA" [selected]="'MCA' == student.student_branch" >MCA</option>
+                                    <option value="M-Tech" [selected]="'M-Tech' == student.student_branch">M-Tech</option>
+                                  </select>                               
+                            </div>                   
+                  </div>  
+                  <div [hidden]="!isupdated">
+                      <h4>Student Detail Updated!</h4>
+                  </div>        
+                    
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer" >
+              <button type="submit" class="btn btn-success" [hidden]="isupdated">Update</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal" (click)="changeisUpdate()">Close</button>
+            </div>
+            
+        </form>
+          </div>
+        </div>
+      </div>
+
+
+
+
